@@ -1575,7 +1575,7 @@ void poweroff(void) {
 }
 
 
-vvoid poweroffPressCheck(void) {
+void poweroffPressCheck(void) {
      #if !defined(VARIANT_HOVERBOARD) && !defined(VARIANT_TRANSPOTTER)
      if(HAL_GPIO_ReadPin(BUTTON_PORT, BUTTON_PIN)) {
       uint16_t cnt_press = 0;
@@ -1583,8 +1583,8 @@ vvoid poweroffPressCheck(void) {
         HAL_Delay(10);
         if (cnt_press++ == 30) { beepShort(5); }
 	  }
-     }
-      }
+     
+      
 
       if (cnt_press > 8) enable = 0;
 
