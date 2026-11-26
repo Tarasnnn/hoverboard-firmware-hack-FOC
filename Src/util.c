@@ -1580,8 +1580,8 @@ void poweroffPressCheck(void) {
     uint16_t cnt_press = 0;
     while(HAL_GPIO_ReadPin(BUTTON_PORT, BUTTON_PIN)) {
       HAL_Delay(10);
-      if (cnt_press++ == 30) {
-        poweroff();
+      if (cnt_press++ == 30) {  poweroff(); }
+     }
       }
 
       if (cnt_press > 8) enable = 0;
