@@ -1576,12 +1576,12 @@ void poweroff(void) {
 
 
 void poweroffPressCheck(void) {
-  #if !defined(VARIANT_HOVERBOARD) && !defined(VARIANT_TRANSPOTTER)
-    if(HAL_GPIO_ReadPin(BUTTON_PORT, BUTTON_PIN)) {
-      uint16_t cnt_press = 0;
-      while(HAL_GPIO_ReadPin(BUTTON_PORT, BUTTON_PIN)) {
-        HAL_Delay(10);
-        if (cnt_press++ == 5 * 100) { beepShort(5); }
+  if(HAL_GPIO_ReadPin(BUTTON_PORT, BUTTON_PIN)) {
+    uint16_t cnt_press = 0;
+    while(HAL_GPIO_ReadPin(BUTTON_PORT, BUTTON_PIN)) {
+      HAL_Delay(10);
+      if (cnt_press++ == 30) {
+        poweroff();
       }
 
       if (cnt_press > 8) enable = 0;
